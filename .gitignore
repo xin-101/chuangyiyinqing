@@ -1,0 +1,46 @@
+# ── Python ──
+__pycache__/
+*.py[cod]
+*.pyo
+*.egg-info/
+dist/
+build/
+*.egg
+.venv/
+venv/
+env/
+
+# ── Node.js ──
+node_modules/
+frontend/dist/
+frontend/.vite-temp/
+
+# ── 数据库 ──
+*.db
+*.sqlite
+*.sqlite3
+identifier.sqlite
+
+# ── 环境变量与密钥 ──
+.env
+**/.env
+
+# ── IDE / 编辑器 ──
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# ── 操作系统 ──
+Thumbs.db
+.DS_Store
+
+# ── 临时文件 ──
+_*.py
+tmp/
+temp/
+
+# ── 项目文档（如需）──
+# 创艺引擎-多模态AI创意生成智能体.docx
