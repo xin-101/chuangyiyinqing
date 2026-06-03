@@ -8,7 +8,7 @@ interface Props {
 export function LoadingButton({ children, className = '' }: Props) {
   return (
     <button disabled className={`opacity-60 cursor-not-allowed ${className}`}>
-      <span className="inline-block w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin mr-2 align-middle" />
+      <span className="inline-block w-4 h-4 border-2 border-slate-300 border-t-sky-500 rounded-full animate-spin mr-2 align-middle" />
       {children}
     </button>
   );
@@ -29,13 +29,13 @@ export function GenerateButton({ onClick, loading, label = '生成', loadingLabe
       disabled={loading}
       className={`px-5 py-2.5 rounded-xl font-medium text-sm transition-all duration-200 ${
         loading
-          ? 'bg-white/5 text-white/40 cursor-not-allowed'
-          : 'bg-gradient-to-r from-neon-cyan/20 to-neon-purple/20 hover:from-neon-cyan/30 hover:to-neon-purple/30 text-white border border-white/10 hover:border-neon-cyan/30 shadow-lg shadow-neon-cyan/5 hover:shadow-neon-cyan/10'
+          ? 'bg-slate-100 text-slate-400 cursor-not-allowed'
+          : 'bg-gradient-to-r from-sky-500 to-indigo-500 hover:from-sky-600 hover:to-indigo-600 text-white border border-transparent shadow-lg shadow-sky-200/50 hover:shadow-sky-300/50'
       } ${className}`}
     >
       {loading ? (
         <span className="flex items-center gap-2">
-          <span className="inline-block w-3.5 h-3.5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+          <span className="inline-block w-3.5 h-3.5 border-2 border-slate-300 border-t-sky-500 rounded-full animate-spin" />
           {loadingLabel}
         </span>
       ) : (
@@ -58,14 +58,14 @@ interface SelectRowProps {
 export function SelectRow({ label, value, options, onChange }: SelectRowProps) {
   return (
     <div className="flex items-center gap-3">
-      <label className="text-xs text-white/50 whitespace-nowrap min-w-[3rem]">{label}</label>
+      <label className="text-xs text-slate-500 whitespace-nowrap min-w-[3rem]">{label}</label>
       <select
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        className="flex-1 bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-sm text-white/80 focus:outline-none focus:border-neon-cyan/40 transition-colors appearance-none cursor-pointer"
+        className="flex-1 bg-white border border-slate-200 rounded-lg px-3 py-2 text-sm text-slate-700 focus:outline-none focus:border-sky-500/60 transition-colors appearance-none cursor-pointer"
       >
         {options.map((opt) => (
-          <option key={opt.value} value={opt.value} className="bg-[#12122a]">
+          <option key={opt.value} value={opt.value} className="bg-white">
             {opt.label}
           </option>
         ))}
@@ -84,7 +84,7 @@ interface ResultCardProps {
 export function ResultCard({ title, children, className = '' }: ResultCardProps) {
   return (
     <div className={`glass-card p-5 ${className}`}>
-      <h3 className="text-xs font-medium text-white/40 uppercase tracking-wider mb-3">{title}</h3>
+      <h3 className="text-xs font-medium text-slate-400 uppercase tracking-wider mb-3">{title}</h3>
       {children}
     </div>
   );

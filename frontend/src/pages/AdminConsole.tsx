@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+﻿import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { adminApi } from '../api';
 import type { AICallLog } from '../types';
@@ -63,7 +63,7 @@ export default function AdminConsole() {
     <div className="max-w-6xl mx-auto space-y-6">
       <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
         <h1 className="text-2xl font-bold gradient-text mb-1">管理控制台</h1>
-        <p className="text-white/40 text-sm">AI 模型调用记录与状态监控</p>
+        <p className="text-slate-400 text-sm">AI 模型调用记录与状态监控</p>
       </motion.div>
 
       {/* 统计卡片 */}
@@ -81,7 +81,7 @@ export default function AdminConsole() {
             { label: '成功率', value: `${stats.success_rate}%`, color: 'text-cyan-400' },
           ].map((item) => (
             <div key={item.label} className="glass-card p-4">
-              <p className="text-white/40 text-xs mb-1">{item.label}</p>
+              <p className="text-slate-400 text-xs mb-1">{item.label}</p>
               <p className={`text-2xl font-bold ${item.color}`}>{item.value}</p>
             </div>
           ))}
@@ -96,12 +96,12 @@ export default function AdminConsole() {
           transition={{ delay: 0.15 }}
           className="glass-card p-4"
         >
-          <h2 className="text-sm font-semibold text-white/60 mb-3">按调用类型分布</h2>
+          <h2 className="text-sm font-semibold text-slate-600 mb-3">按调用类型分布</h2>
           <div className="flex gap-4 flex-wrap">
             {Object.entries(stats.by_type).map(([type, count]) => (
-              <div key={type} className="bg-white/5 rounded-lg px-3 py-2 flex items-center gap-2">
-                <span className="text-xs text-white/40">{typeLabels[type] || type}</span>
-                <span className="text-sm font-bold text-white/80">{count}</span>
+              <div key={type} className="bg-slate-100 rounded-lg px-3 py-2 flex items-center gap-2">
+                <span className="text-xs text-slate-400">{typeLabels[type] || type}</span>
+                <span className="text-sm font-bold text-slate-700">{count}</span>
               </div>
             ))}
           </div>
@@ -115,21 +115,21 @@ export default function AdminConsole() {
         transition={{ delay: 0.2 }}
         className="glass-card"
       >
-        <div className="p-4 border-b border-white/5 flex items-center justify-between">
-          <h2 className="text-sm font-semibold text-white/60">调用记录</h2>
+        <div className="p-4 border-b border-slate-100 flex items-center justify-between">
+          <h2 className="text-sm font-semibold text-slate-600">调用记录</h2>
           <input
             type="text"
             placeholder="搜索输入内容、模型名..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="bg-white/5 border border-white/10 rounded-lg px-3 py-1.5 text-xs text-white/70 placeholder-white/30 w-56 focus:outline-none focus:border-cyan-400/40"
+            className="bg-slate-100 border border-slate-200 rounded-lg px-3 py-1.5 text-xs text-slate-700 placeholder-white/30 w-56 focus:outline-none focus:border-sky-500/60"
           />
         </div>
 
         <div className="overflow-x-auto">
           <table className="w-full text-xs">
             <thead>
-              <tr className="text-white/30 border-b border-white/5">
+              <tr className="text-slate-400 border-b border-slate-100">
                 <th className="text-left px-4 py-3 font-medium">类型</th>
                 <th className="text-left px-4 py-3 font-medium">模型</th>
                 <th className="text-left px-4 py-3 font-medium max-w-xs">输入内容</th>
@@ -141,13 +141,13 @@ export default function AdminConsole() {
             <tbody>
               {loading ? (
                 <tr>
-                  <td colSpan={6} className="text-center py-8 text-white/20">
+                  <td colSpan={6} className="text-center py-8 text-slate-300">
                     加载中...
                   </td>
                 </tr>
               ) : filteredLogs.length === 0 ? (
                 <tr>
-                  <td colSpan={6} className="text-center py-8 text-white/20">
+                  <td colSpan={6} className="text-center py-8 text-slate-300">
                     暂无调用记录
                   </td>
                 </tr>
@@ -155,18 +155,18 @@ export default function AdminConsole() {
                 filteredLogs.map((log, i) => (
                   <tr
                     key={log.id}
-                    className="border-b border-white/5 hover:bg-white/[0.02] transition-colors"
+                    className="border-b border-slate-100 hover:bg-slate-50 transition-colors"
                   >
                     <td className="px-4 py-3">
-                      <span className="bg-white/5 rounded px-2 py-0.5 text-white/60">
+                      <span className="bg-slate-100 rounded px-2 py-0.5 text-slate-600">
                         {typeLabels[log.call_type] || log.call_type}
                       </span>
                     </td>
-                    <td className="px-4 py-3 text-white/70 font-mono">{log.model}</td>
-                    <td className="px-4 py-3 text-white/50 max-w-xs truncate" title={log.input_text}>
+                    <td className="px-4 py-3 text-slate-700 font-mono">{log.model}</td>
+                    <td className="px-4 py-3 text-slate-500 max-w-xs truncate" title={log.input_text}>
                       {log.input_text}
                     </td>
-                    <td className="px-4 py-3 text-white/40 max-w-xs truncate" title={log.response_summary}>
+                    <td className="px-4 py-3 text-slate-400 max-w-xs truncate" title={log.response_summary}>
                       {log.response_summary}
                     </td>
                     <td className="px-4 py-3 text-center">
@@ -176,7 +176,7 @@ export default function AdminConsole() {
                         <span className="text-red-400">✗ 失败</span>
                       )}
                     </td>
-                    <td className="px-4 py-3 text-right text-white/30">
+                    <td className="px-4 py-3 text-right text-slate-400">
                       {new Date(log.created_at).toLocaleString('zh-CN', {
                         month: '2-digit',
                         day: '2-digit',
@@ -193,22 +193,22 @@ export default function AdminConsole() {
 
         {/* 分页 */}
         {totalPages > 1 && (
-          <div className="p-4 border-t border-white/5 flex items-center justify-between">
-            <span className="text-xs text-white/30">
+          <div className="p-4 border-t border-slate-100 flex items-center justify-between">
+            <span className="text-xs text-slate-400">
               共 {total} 条记录，第 {page}/{totalPages} 页
             </span>
             <div className="flex gap-2">
               <button
                 disabled={page <= 1}
                 onClick={() => setPage((p) => Math.max(1, p - 1))}
-                className="px-3 py-1.5 rounded-lg text-xs bg-white/5 text-white/50 hover:bg-white/10 disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
+                className="px-3 py-1.5 rounded-lg text-xs bg-slate-100 text-slate-500 hover:bg-slate-100 disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
               >
                 上一页
               </button>
               <button
                 disabled={page >= totalPages}
                 onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
-                className="px-3 py-1.5 rounded-lg text-xs bg-white/5 text-white/50 hover:bg-white/10 disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
+                className="px-3 py-1.5 rounded-lg text-xs bg-slate-100 text-slate-500 hover:bg-slate-100 disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
               >
                 下一页
               </button>

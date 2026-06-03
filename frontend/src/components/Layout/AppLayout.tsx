@@ -21,15 +21,15 @@ export default function AppLayout() {
         }`}
       >
         {/* 顶部栏 */}
-        <header className="h-14 flex items-center justify-between px-6 border-b border-white/5 sticky top-0 z-20 backdrop-blur-xl bg-[#0a0a1a]/60">
+        <header className="h-14 flex items-center justify-between px-6 border-b border-slate-200 sticky top-0 z-20 backdrop-blur-xl bg-white/80">
           <button
             onClick={toggleSidebar}
-            className="text-white/40 hover:text-white/70 text-lg transition-colors p-1"
+            className="text-slate-400 hover:text-slate-700 text-lg transition-colors p-1"
           >
             {sidebarOpen ? '◁' : '▷'}
           </button>
-          <div className="flex items-center gap-3 text-xs text-white/30">
-            <span className="w-2 h-2 rounded-full bg-green-400/60 animate-pulse" />
+          <div className="flex items-center gap-3 text-xs text-slate-400">
+            <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
             系统在线
           </div>
         </header>

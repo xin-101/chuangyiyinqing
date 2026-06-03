@@ -1,4 +1,4 @@
-import { useReducer, useState, useRef, useCallback } from 'react';
+﻿import { useReducer, useState, useRef, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { streamRequest } from '../api';
@@ -160,7 +160,7 @@ export default function Dashboard() {
       {/* 标题区 */}
       <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="mb-8 text-center">
         <h1 className="text-4xl font-bold gradient-text mb-3">创艺引擎</h1>
-        <p className="text-white/40 text-sm">输入一个灵感，收获完整的创作方案</p>
+        <p className="text-slate-400 text-sm">输入一个灵感，收获完整的创作方案</p>
       </motion.div>
 
       {/* 灵感输入区 */}
@@ -174,7 +174,7 @@ export default function Dashboard() {
           value={idea}
           onChange={(e) => setIdea(e.target.value)}
           placeholder="输入你的创意灵感，例如：用AI守护传统文化..."
-          className="w-full bg-transparent border border-white/10 rounded-xl p-4 text-white/80 text-sm resize-none h-24 focus:outline-none focus:border-cyan-400/30 transition-colors placeholder:text-white/20"
+          className="w-full bg-transparent border border-slate-200 rounded-xl p-4 text-slate-700 text-sm resize-none h-24 focus:outline-none focus:border-sky-500/50 transition-colors placeholder:text-slate-300"
         />
         <div className="flex items-center justify-between mt-4">
           <div className="flex gap-2 flex-wrap">
@@ -182,7 +182,7 @@ export default function Dashboard() {
               <button
                 key={ex}
                 onClick={() => setIdea(ex)}
-                className="text-[11px] px-2.5 py-1 rounded-full bg-white/5 hover:bg-white/10 text-white/40 hover:text-white/60 transition-colors"
+                className="text-[11px] px-2.5 py-1 rounded-full bg-slate-100 hover:bg-slate-100 text-slate-400 hover:text-slate-600 transition-colors"
               >
                 {ex}
               </button>
@@ -202,13 +202,13 @@ export default function Dashboard() {
           {/* 文案输出（流式） */}
           {streamState.writing && (
             <div className="glass-card p-6">
-              <h3 className="text-xs font-medium text-white/40 uppercase tracking-wider mb-3">
+              <h3 className="text-xs font-medium text-slate-400 uppercase tracking-wider mb-3">
                 ✦ 创意文案
-                {loading && <span className="ml-2 inline-block w-2 h-4 bg-cyan-400/60 animate-pulse" />}
+                {loading && <span className="ml-2 inline-block w-2 h-4 bg-sky-500 animate-pulse" />}
               </h3>
-              <div className="text-sm text-white/70 leading-relaxed whitespace-pre-wrap">
+              <div className="text-sm text-slate-700 leading-relaxed whitespace-pre-wrap">
                 {streamState.writing}
-                {loading && <span className="inline-block w-2 h-4 bg-cyan-400/60 animate-pulse ml-1" />}
+                {loading && <span className="inline-block w-2 h-4 bg-sky-500 animate-pulse ml-1" />}
               </div>
             </div>
           )}
@@ -216,18 +216,18 @@ export default function Dashboard() {
           {/* 配图区域 */}
           {(streamState.image_urls.length > 0 || streamState.image_prompt) && (
             <div className="glass-card p-6">
-              <h3 className="text-xs font-medium text-white/40 uppercase tracking-wider mb-3">◈ 配图方案</h3>
+              <h3 className="text-xs font-medium text-slate-400 uppercase tracking-wider mb-3">◈ 配图方案</h3>
               {streamState.image_urls.length > 0 && (
                 <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
                   {streamState.image_urls.map((url, i) => (
-                    <div key={i} className="aspect-square rounded-xl overflow-hidden bg-white/5">
+                    <div key={i} className="aspect-square rounded-xl overflow-hidden bg-slate-100">
                       <img src={url} alt={`配图 ${i + 1}`} className="w-full h-full object-cover" />
                     </div>
                   ))}
                 </div>
               )}
               {streamState.image_prompt && (
-                <p className="text-xs text-white/30 mt-3">提示词: {streamState.image_prompt}</p>
+                <p className="text-xs text-slate-400 mt-3">提示词: {streamState.image_prompt}</p>
               )}
             </div>
           )}
@@ -235,11 +235,11 @@ export default function Dashboard() {
           {/* 视频脚本（流式） */}
           {streamState.video_outline && (
             <div className="glass-card p-6">
-              <h3 className="text-xs font-medium text-white/40 uppercase tracking-wider mb-3">
+              <h3 className="text-xs font-medium text-slate-400 uppercase tracking-wider mb-3">
                 ◎ 视频脚本梗概
-                {loading && !streamState.image_urls.length && <span className="ml-2 inline-block w-2 h-4 bg-cyan-400/60 animate-pulse" />}
+                {loading && !streamState.image_urls.length && <span className="ml-2 inline-block w-2 h-4 bg-sky-500 animate-pulse" />}
               </h3>
-              <div className="text-sm text-white/70 leading-relaxed whitespace-pre-wrap">
+              <div className="text-sm text-slate-700 leading-relaxed whitespace-pre-wrap">
                 {streamState.video_outline}
               </div>
             </div>
@@ -250,19 +250,19 @@ export default function Dashboard() {
             <div className="flex flex-wrap gap-3 justify-center pt-4">
               <button
                 onClick={handleCopy}
-                className="px-4 py-2 rounded-xl bg-white/5 hover:bg-white/10 text-xs text-white/50 transition-colors"
+                className="px-4 py-2 rounded-xl bg-slate-100 hover:bg-slate-100 text-xs text-slate-500 transition-colors"
               >
                 复制到剪贴板
               </button>
               <button
                 onClick={() => downloadAsMarkdown(streamState)}
-                className="px-4 py-2 rounded-xl bg-white/5 hover:bg-white/10 text-xs text-white/50 transition-colors"
+                className="px-4 py-2 rounded-xl bg-slate-100 hover:bg-slate-100 text-xs text-slate-500 transition-colors"
               >
                 导出 Markdown
               </button>
-              <button onClick={() => navigate('/writing')} className="px-4 py-2 rounded-xl bg-white/5 hover:bg-white/10 text-xs text-white/50 transition-colors">继续精修文案</button>
-              <button onClick={() => navigate('/visual')} className="px-4 py-2 rounded-xl bg-white/5 hover:bg-white/10 text-xs text-white/50 transition-colors">调整视觉方案</button>
-              <button onClick={() => navigate('/inspiration')} className="px-4 py-2 rounded-xl bg-white/5 hover:bg-white/10 text-xs text-white/50 transition-colors">发散更多灵感</button>
+              <button onClick={() => navigate('/writing')} className="px-4 py-2 rounded-xl bg-slate-100 hover:bg-slate-100 text-xs text-slate-500 transition-colors">继续精修文案</button>
+              <button onClick={() => navigate('/visual')} className="px-4 py-2 rounded-xl bg-slate-100 hover:bg-slate-100 text-xs text-slate-500 transition-colors">调整视觉方案</button>
+              <button onClick={() => navigate('/inspiration')} className="px-4 py-2 rounded-xl bg-slate-100 hover:bg-slate-100 text-xs text-slate-500 transition-colors">发散更多灵感</button>
             </div>
           )}
         </motion.div>
@@ -277,7 +277,7 @@ export default function Dashboard() {
           className="text-center py-16"
         >
           <div className="text-5xl mb-4 opacity-20">✦</div>
-          <p className="text-white/20 text-sm">在上方输入灵感，体验"一个灵感，全案生成"</p>
+          <p className="text-slate-300 text-sm">在上方输入灵感，体验"一个灵感，全案生成"</p>
         </motion.div>
       )}
     </div>

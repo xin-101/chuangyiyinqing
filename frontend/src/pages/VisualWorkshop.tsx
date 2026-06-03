@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { visualApi } from '../api';
 import { useAppStore } from '../store/useAppStore';
@@ -55,7 +55,7 @@ export default function VisualWorkshop() {
     <div className="max-w-4xl mx-auto">
       <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="mb-6">
         <h1 className="text-2xl font-bold gradient-text">AI 视觉创作工坊</h1>
-        <p className="text-white/40 text-sm mt-1">文生图 · 智能设计排版</p>
+        <p className="text-slate-400 text-sm mt-1">文生图 · 智能设计排版</p>
       </motion.div>
 
       {/* 模式切换 */}
@@ -66,8 +66,8 @@ export default function VisualWorkshop() {
             onClick={() => { setMode(m); setResult(null); }}
             className={`px-4 py-2 rounded-xl text-sm transition-all ${
               mode === m
-                ? 'bg-white/10 text-white border border-white/10'
-                : 'text-white/40 hover:text-white/60'
+                ? 'bg-slate-100 text-slate-900 border border-slate-200'
+                : 'text-slate-400 hover:text-slate-600'
             }`}
           >
             {m === 'generate' ? '文生图' : '智能设计排版'}
@@ -90,7 +90,7 @@ export default function VisualWorkshop() {
                 value={prompt}
                 onChange={(e) => setPrompt(e.target.value)}
                 placeholder="描述你想要的画面..."
-                className="w-full bg-white/5 border border-white/10 rounded-lg p-3 text-sm text-white/70 resize-none h-28 focus:outline-none focus:border-neon-cyan/30 transition-colors placeholder:text-white/20"
+                className="w-full bg-slate-100 border border-slate-200 rounded-lg p-3 text-sm text-slate-700 resize-none h-28 focus:outline-none focus:border-sky-500/50 transition-colors placeholder:text-slate-300"
               />
             ) : (
               <>
@@ -99,13 +99,13 @@ export default function VisualWorkshop() {
                   value={title}
                   onChange={(e) => setTitle(e.target.value)}
                   placeholder="标题"
-                  className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-sm text-white/70 focus:outline-none focus:border-neon-cyan/30 placeholder:text-white/20"
+                  className="w-full bg-slate-100 border border-slate-200 rounded-lg px-3 py-2 text-sm text-slate-700 focus:outline-none focus:border-sky-500/50 placeholder:text-slate-300"
                 />
                 <input
                   value={subtitle}
                   onChange={(e) => setSubtitle(e.target.value)}
                   placeholder="副标题（可选）"
-                  className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-sm text-white/70 focus:outline-none focus:border-neon-cyan/30 placeholder:text-white/20"
+                  className="w-full bg-slate-100 border border-slate-200 rounded-lg px-3 py-2 text-sm text-slate-700 focus:outline-none focus:border-sky-500/50 placeholder:text-slate-300"
                 />
               </>
             )}
@@ -127,22 +127,22 @@ export default function VisualWorkshop() {
         >
           {result ? (
             <div className="glass-card p-5">
-              <h3 className="text-xs font-medium text-white/40 uppercase tracking-wider mb-3">◈ 生成结果</h3>
+              <h3 className="text-xs font-medium text-slate-400 uppercase tracking-wider mb-3">◈ 生成结果</h3>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 {result.image_urls.map((url, i) => (
-                  <div key={i} className="aspect-[4/3] rounded-xl overflow-hidden bg-white/5">
+                  <div key={i} className="aspect-[4/3] rounded-xl overflow-hidden bg-slate-100">
                     <img src={url} alt={`生成 ${i + 1}`} className="w-full h-full object-cover" />
                   </div>
                 ))}
               </div>
               {result.prompt && (
-                <p className="text-xs text-white/30 mt-3">提示词: {result.prompt}</p>
+                <p className="text-xs text-slate-400 mt-3">提示词: {result.prompt}</p>
               )}
             </div>
           ) : (
             <div className="glass-card p-10 text-center">
               <div className="text-4xl mb-3 opacity-20">◈</div>
-              <p className="text-white/20 text-sm">选择参数并输入内容，生成你的视觉作品</p>
+              <p className="text-slate-300 text-sm">选择参数并输入内容，生成你的视觉作品</p>
             </div>
           )}
         </motion.div>

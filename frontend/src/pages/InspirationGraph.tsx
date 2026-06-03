@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from 'react';
+﻿import { useState, useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { inspirationApi } from '../api';
 import { useAppStore } from '../store/useAppStore';
@@ -121,7 +121,7 @@ export default function InspirationGraph() {
     <div className="max-w-5xl mx-auto">
       <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="mb-6">
         <h1 className="text-2xl font-bold gradient-text">创意灵感图谱</h1>
-        <p className="text-white/40 text-sm mt-1">输入概念 · AI 发散联想 · 双击节点继续探索</p>
+        <p className="text-slate-400 text-sm mt-1">输入概念 · AI 发散联想 · 双击节点继续探索</p>
       </motion.div>
 
       {/* 输入 */}
@@ -131,7 +131,7 @@ export default function InspirationGraph() {
           onChange={(e) => setConcept(e.target.value)}
           onKeyDown={(e) => e.key === 'Enter' && handleExpand()}
           placeholder="输入核心创意概念，例如：未来城市..."
-          className="flex-1 bg-white/5 border border-white/10 rounded-lg px-4 py-2.5 text-sm text-white/70 focus:outline-none focus:border-neon-cyan/30 placeholder:text-white/20"
+          className="flex-1 bg-slate-100 border border-slate-200 rounded-lg px-4 py-2.5 text-sm text-slate-700 focus:outline-none focus:border-sky-500/50 placeholder:text-slate-300"
         />
         <GenerateButton onClick={handleExpand} loading={loading} label="展开图谱" />
       </div>
@@ -149,8 +149,8 @@ export default function InspirationGraph() {
           <div className="flex items-center justify-center h-full">
             <div className="text-center">
               <div className="text-5xl mb-3 opacity-20">✦</div>
-              <p className="text-white/20 text-sm">输入概念展开灵感图谱</p>
-              <p className="text-white/10 text-xs mt-1">双击节点可继续联想发散</p>
+              <p className="text-slate-300 text-sm">输入概念展开灵感图谱</p>
+              <p className="text-slate-200 text-xs mt-1">双击节点可继续联想发散</p>
             </div>
           </div>
         )}
@@ -158,7 +158,7 @@ export default function InspirationGraph() {
 
       {/* 节点说明 */}
       {nodes.length > 0 && (
-        <div className="flex gap-4 mt-4 text-xs text-white/30 justify-center">
+        <div className="flex gap-4 mt-4 text-xs text-slate-400 justify-center">
           <span><span className="inline-block w-2.5 h-2.5 rounded-full bg-neon-cyan mr-1" /> 核心概念</span>
           <span><span className="inline-block w-2.5 h-2.5 rounded-full bg-neon-purple mr-1" /> 相关主题</span>
           <span><span className="inline-block w-2.5 h-2.5 rounded-full bg-neon-gold mr-1" /> 风格参考</span>

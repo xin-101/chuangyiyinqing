@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+﻿import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { writingApi } from '../api';
 import { useAppStore } from '../store/useAppStore';
@@ -43,7 +43,7 @@ export default function WritingWorkshop() {
     <div className="max-w-4xl mx-auto">
       <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="mb-6">
         <h1 className="text-2xl font-bold gradient-text">智能写作工坊</h1>
-        <p className="text-white/40 text-sm mt-1">20+文体支持 · AI 智能创作</p>
+        <p className="text-slate-400 text-sm mt-1">20+文体支持 · AI 智能创作</p>
       </motion.div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
@@ -62,7 +62,7 @@ export default function WritingWorkshop() {
               value={prompt}
               onChange={(e) => setPrompt(e.target.value)}
               placeholder="描述你想写的内容..."
-              className="w-full bg-white/5 border border-white/10 rounded-lg p-3 text-sm text-white/70 resize-none h-28 focus:outline-none focus:border-neon-cyan/30 transition-colors placeholder:text-white/20"
+              className="w-full bg-slate-100 border border-slate-200 rounded-lg p-3 text-sm text-slate-700 resize-none h-28 focus:outline-none focus:border-sky-500/50 transition-colors placeholder:text-slate-300"
             />
             <GenerateButton onClick={handleGenerate} loading={loading} label="开始创作" className="w-full" />
           </div>
@@ -76,12 +76,12 @@ export default function WritingWorkshop() {
         >
           {result ? (
             <ResultCard title={`${genre} · 生成结果`}>
-              <div className="text-sm text-white/70 leading-relaxed whitespace-pre-wrap">{result}</div>
+              <div className="text-sm text-slate-700 leading-relaxed whitespace-pre-wrap">{result}</div>
             </ResultCard>
           ) : (
             <div className="glass-card p-10 text-center">
               <div className="text-4xl mb-3 opacity-20">✎</div>
-              <p className="text-white/20 text-sm">选择文体并在左侧输入需求，开始创作</p>
+              <p className="text-slate-300 text-sm">选择文体并在左侧输入需求，开始创作</p>
             </div>
           )}
         </motion.div>
